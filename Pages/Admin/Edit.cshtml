@@ -1,0 +1,80 @@
+﻿@page
+@model MyEshop.Pages.Admin.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="Edit">
+    <div class="mt-5">
+        <h1>Edit Product</h1>
+        <hr />
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Product1.Id" />
+        <dl class="dl-horizontal">
+            <!-- Name -->
+            <dt>
+                <label asp-for="Product1.Name"></label>
+            </dt>
+            <dd>
+                <input asp-for="Product1.Name" class="form-control" />
+                <span asp-validation-for="Product1.Name"></span>
+            </dd>
+
+            <!-- Description -->
+            <dt>
+                <label asp-for="Product1.Description"></label>
+            </dt>
+            <dd>
+                <textarea asp-for="Product1.Description" class="form-control"></textarea>
+                <span asp-validation-for="Product1.Description"></span>
+            </dd>
+
+            <!-- Price -->
+            <dt>
+                <label asp-for="Product1.Price"></label>
+            </dt>
+            <dd>
+                <input asp-for="Product1.Price" class="form-control" />
+                <span asp-validation-for="Product1.Price"></span>
+            </dd>
+
+            <!-- QuantityInStock -->
+            <dt>
+                <label asp-for="Product1.QuantityInStock"></label>
+            </dt>
+            <dd>
+                <input asp-for="Product1.QuantityInStock" class="form-control" />
+                <span asp-validation-for="Product1.QuantityInStock"></span>
+            </dd>
+
+            <!-- Picture -->
+            <dt>
+                <label asp-for="Product1.Picture"></label>
+            </dt>
+            <dd>
+                <input asp-for="Product1.Picture" class="form-control" />
+                <span asp-validation-for="Product1.Picture"></span>
+            </dd>
+
+            <!-- Categories -->
+
+            <dt><label>Categories</label></dt>
+            <dd>
+                @foreach (var item in Model.Product1.Categories)
+                {
+                    <p>
+                        <input type="checkbox" name="selectedGroups" value="@item.Id" @((Model.GroupsProduct.Any(c => c == item.Id) ? "checked" : "")) /> @item.Name
+                    </p>
+                }
+            </dd>
+
+            <!-- btn -->
+            <dt></dt>
+            <dd>
+                <input type="submit" class="btn btn-success" />
+            </dd>
+        </dl>
+    </form>
+</div>

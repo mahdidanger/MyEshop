@@ -1,0 +1,86 @@
+﻿@page
+@model MyEshop.Pages.Admin.AddModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1 class="mt-3">Add Product</h1>
+<hr />
+<form method="post" enctype="multipart/form-data">
+    <dl class="dl-horizontal">
+        <!-- Name -->
+        <dt>
+            <label asp-for="Products.Name"></label>
+        </dt>
+        <dd>
+            <input asp-for="Products.Name" class="form-control" />
+            <span asp-validation-for="Products.Name"></span>
+        </dd>
+
+        <!-- Description -->
+        <dt>
+            <label asp-for="Products.Description"></label>
+        </dt>
+        <dd>
+            <textarea asp-for="Products.Description" class="form-control"></textarea>
+            <span asp-validation-for="Products.Description"></span>
+        </dd>
+
+        <!-- Price -->
+        <dt>
+            <label asp-for="Products.Price"></label>
+        </dt>
+        <dd>
+            <input asp-for="Products.Price" class="form-control" />
+            <span asp-validation-for="Products.Price"></span>
+        </dd>
+
+        <!-- QuantityInStock -->
+        <dt>
+            <label asp-for="Products.QuantityInStock"></label>
+        </dt>
+        <dd>
+            <input asp-for="Products.QuantityInStock" class="form-control" />
+            <span asp-validation-for="Products.QuantityInStock"></span>
+        </dd>
+
+        <!-- Picture -->
+        <dt>
+            <label asp-for="Products.Picture"></label>
+        </dt>
+        <dd>
+            <input asp-for="Products.Picture" class="form-control" />
+            <span asp-validation-for="Products.Picture"></span>
+        </dd>
+
+
+        <!-- Categories -->
+
+        <dt><label>Categories</label></dt>
+        <dd>
+            @foreach (var item in Model.Products.Categories)
+            {
+                <p>
+                    <input type="checkbox" name="selectedGroups" value="@item.Id" /> @item.Name
+                </p>
+            }
+        </dd>
+
+        <!-- btn -->
+        <dt></dt>
+        <dd>
+            <input type="submit" class="btn btn-success" />
+        </dd>
+
+
+
+
+
+
+
+
+
+
+    </dl>
+</form>

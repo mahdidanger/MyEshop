@@ -1,0 +1,44 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+@if (Model != null)
+{
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Commodity</th>
+                <th>Count</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Count</td>
+                    <td>@(item.Count * item.Price)</td>
+                    <td>
+                        <a asp-action="RemoveCart"
+                           asp-controller="Home"
+                           asp-route-detailId="@item.DetailId">Delete</a>
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+
+
+    </table>
+    <h5> Total Sum : @Model.OrderDetails.Sum(s => s.Count * s.Price)</h5>
+}
+else
+{
+<div class="alert alert-danger">There Is No Invoice</div>
+}
